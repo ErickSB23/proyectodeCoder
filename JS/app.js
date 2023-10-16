@@ -76,6 +76,7 @@ console.log(miObjeto)
 
 
 */
+/*
 var intentos = 3;  //----------------- numero de intentos
 
 //----------------- credenciales correctas
@@ -99,3 +100,82 @@ while(intentos > 0){
 if (intentos === 0){
     alert("Agotastes tus intentos, Cuenta bloquedad")
 }
+*/
+const miArray = []
+// funcion para agregar al array
+const agregarArrya =() => {
+
+    const objeto = {}
+
+    objeto.id = prompt("ingresa el ID del producto")
+    objeto.producto =prompt("ingresa el producto")
+
+    if (objeto.id && objeto.producto){
+        miArray.push(objeto)
+        console.log("Objeto agregado",objeto)
+    }else{
+        console.log("no se ingresaron los valores correctos")
+    }
+}
+
+//funcion para mostrar el contenido del array
+const mostrarObjetos = () =>{
+    console.log("el contenido del array de objetos es de" )
+    console.log(miArray)
+}
+
+//funcion para modificar un objeto del array
+const modificarObjeto =() =>{
+    const indice = parseInt(prompt("ingresa el indice del objeto que deseas modificar "))
+    if(!isNaN(indice) && indice >= 0 && indice < miArray.length){
+        const objeto = miArray[indice]
+        objeto.id = prompt("ingresa el NUEVO ID")
+        objeto.producto =prompt("ingresa NUEVO PRODUCTO")
+        console.log("Se modifico con exito",objeto)
+
+    }else{
+        console.log("indice no valido")
+    }
+}
+
+//funcion para eliminar un objero del array
+const eliminarObjeto=()=>{
+    const indice =parseInt(prompt("ingresa el indice del objeto"))
+    if(!isNaN(indice)&& indice >= 0 && indice < miArray.length){
+        const borrarObjeto = miArray.splice(indice,1)
+        console.log("objeto eliminado", borrarObjeto[0])
+    }else
+    console.log("indice no valido")
+}
+
+while(true){
+    const opcion = prompt("Seleccione una opción:\n" +
+    "1. Agregar objeto\n" +
+    "2. Mostrar objetos\n" +
+    "3. Modificar objeto\n" +
+    "4. Eliminar objeto\n" +
+    "5. Salir"
+)
+
+switch(opcion){
+    case"1":
+    agregarArrya()
+    break
+    case"2":
+    mostrarObjetos()
+    break
+    case"3":
+    modificarObjeto()
+    break
+    case"4":
+    eliminarObjeto()
+    break
+    case"5":
+    alert("Saliendo del programa")
+    break
+        default:
+        alert("opcion no valida, intente con una opcion valida")
+}
+}
+
+
