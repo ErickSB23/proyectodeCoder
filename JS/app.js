@@ -148,33 +148,63 @@ const eliminarObjeto=()=>{
     console.log("indice no valido")
 }
 
+//funcion para buscar un objeto por su ID
+const buscarPorID =(id) =>{
+    const objetoEncontrado = miArray.find(objeto=> objeto.id === id)
+    if(objetoEncontrado){
+        console.log("objeto encontrado:", objetoEncontrado)
+    }else{
+        console.log("Objeto no encontrado")
+    }
+}
+
+//funcion para filtrar objetos por producto
+const filtrarPorProducto = (producto) =>{
+    const productoFiltrado = miArray.filter(objeto=>objeto.producto === producto)
+   if (productoFiltrado){
+        console.log("Productos encontrados", productoFiltrado)
+   } else{
+    console.log("Nincin objeto en contrado para el producto")
+   }
+}
+
 while(true){
     const opcion = prompt("Seleccione una opción:\n" +
     "1. Agregar objeto\n" +
     "2. Mostrar objetos\n" +
     "3. Modificar objeto\n" +
     "4. Eliminar objeto\n" +
-    "5. Salir"
+    "5. Buscar por ID\n" +
+    "6. Filtrar por producto\n"+
+    "7. Salir"
 )
 
 switch(opcion){
     case"1":
-    agregarArrya()
-    break
+        agregarArrya()
+        break
     case"2":
-    mostrarObjetos()
-    break
+        mostrarObjetos()
+     break
     case"3":
-    modificarObjeto()
-    break
+        modificarObjeto()
+        break
     case"4":
-    eliminarObjeto()
-    break
+        eliminarObjeto()
+        break
     case"5":
-    alert("Saliendo del programa")
-    break
-        default:
-        alert("opcion no valida, intente con una opcion valida")
+        const idBuscar = prompt("ingresa el ID que deseas buscar")
+        buscarPorID(idBuscar);
+        break
+    case "6":
+        const productoAFiltrar = prompt("Ingresa el producto para filtrar")
+        filtrarPorProducto(productoAFiltrar)
+        break
+    case "7":
+        alert("Saliendo del programa")
+        
+    default:
+        alert("Opcion no valida, intente con una opcion valida")
 }
 }
 
